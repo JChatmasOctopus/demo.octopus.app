@@ -1,0 +1,39 @@
+step "deploy-data-processor" {
+    name = "Deploy data processor"
+
+    action {
+        properties = {
+            GCloudRunDeploy.Container = "{\"PackageId\":\"octopusdeploy/octo\",\"FeedId\":\"docker-hub\"}"
+            GCloudRunDeploy.PrintCommand = "False"
+            Octopus.Action.Template.Id = "ActionTemplates-3181"
+            Octopus.Action.Template.Version = "1"
+        }
+        worker_pool = "hosted-ubuntu"
+
+        packages "GCloudRunDeploy.Container" {
+            acquisition_location = "NotAcquired"
+            feed = "docker-hub"
+            package_id = "octopusdeploy/octo"
+            properties = {
+                Extract = "True"
+                PackageParameterName = "GCloudRunDeploy.Container"
+                Purpose = ""
+                SelectionMode = "deferred"
+            }
+        }
+    }
+}
+
+step "verify-data-processor-service" {
+    name = "Verify data processor service"
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.Script.ScriptBody = "Write-Host \"Data processor success\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+        }
+        worker_pool = "aws-worker-pool"
+    }
+}
