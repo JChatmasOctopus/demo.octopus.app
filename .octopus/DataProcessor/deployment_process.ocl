@@ -6,7 +6,7 @@ step "deploy-data-processor-cloud-run" {
             GCloudRunDeploy.Container = "{\"PackageId\":\"cloudrun/container/hello\",\"FeedId\":\"us-docker-pkg-dev\"}"
             GCloudRunDeploy.PrintCommand = "False"
             Octopus.Action.Template.Id = "ActionTemplates-3203"
-            Octopus.Action.Template.Version = "2"
+            Octopus.Action.Template.Version = "3"
         }
         worker_pool = "aws-worker-pool"
 
