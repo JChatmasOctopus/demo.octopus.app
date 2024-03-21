@@ -1,4 +1,4 @@
-variable "processor.glcoud.account" {
+variable "processor.gcloud.account" {
     type = "GoogleCloudAccount"
 
     value "gcloud-chatmas" {}
