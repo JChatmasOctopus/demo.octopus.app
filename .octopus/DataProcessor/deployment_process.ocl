@@ -1,19 +1,19 @@
-step "deploy-data-processor" {
-    name = "Deploy data processor"
+step "deploy-data-processor-cloud-run" {
+    name = "Deploy data processor - Cloud Run"
 
     action {
         properties = {
-            GCloudRunDeploy.Container = "{\"PackageId\":\"octopusdeploy/octo\",\"FeedId\":\"docker-hub\"}"
+            GCloudRunDeploy.Container = "{\"PackageId\":\"cloudrun/container/hello\",\"FeedId\":\"us-docker-pkg-dev\"}"
             GCloudRunDeploy.PrintCommand = "False"
-            Octopus.Action.Template.Id = "ActionTemplates-3181"
-            Octopus.Action.Template.Version = "1"
+            Octopus.Action.Template.Id = "ActionTemplates-3203"
+            Octopus.Action.Template.Version = "2"
         }
-        worker_pool = "hosted-ubuntu"
+        worker_pool = "aws-worker-pool"
 
         packages "GCloudRunDeploy.Container" {
             acquisition_location = "NotAcquired"
-            feed = "docker-hub"
-            package_id = "octopusdeploy/octo"
+            feed = "us-docker-pkg-dev"
+            package_id = "cloudrun/container/hello"
             properties = {
                 Extract = "True"
                 PackageParameterName = "GCloudRunDeploy.Container"
