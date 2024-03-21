@@ -3,3 +3,15 @@ variable "processor.gcloud.account" {
 
     value "gcloud-chatmas" {}
 }
+
+variable "processor.gcloud.project" {
+    value "octopus-demos" {}
+}
+
+variable "processor.gcloud.region" {
+    value "us-central1" {}
+}
+
+variable "processor.gcloud.service.name" {
+    value "hello" {}
+}
