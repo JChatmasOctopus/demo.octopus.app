@@ -13,5 +13,22 @@ variable "processor.gcloud.region" {
 }
 
 variable "processor.gcloud.service.name" {
-    value "hello" {}
+    value "data-processor-dev" {
+        environment = ["development"]
+    }
+
+    value "data-processor-qa" {
+        description = ""
+        environment = ["test"]
+    }
+
+    value "data-processor-uat" {
+        description = ""
+        environment = ["uat"]
+    }
+
+    value "data-processor" {
+        description = ""
+        environment = ["production"]
+    }
 }
