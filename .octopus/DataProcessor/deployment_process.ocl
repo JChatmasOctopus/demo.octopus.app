@@ -4,10 +4,12 @@ step "deploy-data-processor-cloud-run" {
     action {
         properties = {
             GCloudRunDeploy.Account = "processor.gcloud.account"
+            GCloudRunDeploy.AdditionalParameters = "--platform=managed --region=us-central1 --allow-unauthenticated"
             GCloudRunDeploy.Container = "{\"PackageId\":\"cloudrun/container/hello\",\"FeedId\":\"us-docker-pkg-dev\"}"
             GCloudRunDeploy.PrintCommand = "False"
             GCloudRunDeploy.Project = "#{processor.gcloud.project}"
             GCloudRunDeploy.Region = "#{processor.gcloud.region}"
+            GCloudRunDeploy.Service = "#{processor.gcloud.service.name}"
             Octopus.Action.Template.Id = "ActionTemplates-3203"
             Octopus.Action.Template.Version = "3"
         }
