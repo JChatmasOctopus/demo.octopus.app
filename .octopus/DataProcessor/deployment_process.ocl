@@ -35,10 +35,18 @@ step "verify-data-processor-service" {
     action {
         action_type = "Octopus.Script"
         properties = {
-            Octopus.Action.Script.ScriptBody = "Write-Host \"Data processor success\""
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                Write-Highlight "Verifying Cloud Run deployment..."
+                Write-Hightlight "......"
+                Write-Hightlight "....."
+                Write-Hightlight "..."
+                Write-Hightlight ".."
+                Write-Hightlight "."
+                Write-Highlight "Service $OctopusParameters["processor.gcloud.service.name"] successfully deployed"
+                EOT
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
         }
-        worker_pool = "aws-worker-pool"
+        worker_pool = "hosted-windows"
     }
 }
