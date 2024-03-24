@@ -37,11 +37,11 @@ step "verify-data-processor-service" {
         properties = {
             Octopus.Action.Script.ScriptBody = <<-EOT
                 Write-Highlight "Verifying Cloud Run deployment..."
-                Write-Hightlight "......"
-                Write-Hightlight "....."
-                Write-Hightlight "..."
-                Write-Hightlight ".."
-                Write-Hightlight "."
+                Write-Highlight "......"
+                Write-Highlight "....."
+                Write-Highlight "..."
+                Write-Highlight ".."
+                Write-Highlight "."
                 Write-Highlight "Service $OctopusParameters["processor.gcloud.service.name"] successfully deployed"
                 EOT
             Octopus.Action.Script.ScriptSource = "Inline"
