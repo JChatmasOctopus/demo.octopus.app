@@ -42,7 +42,8 @@ step "verify-data-processor-service" {
                 Write-Highlight "..."
                 Write-Highlight ".."
                 Write-Highlight "."
-                Write-Highlight "Service $OctopusParameters["processor.gcloud.service.name"] successfully deployed"
+                $service = $OctopusParameters["processor.gcloud.service.name"] 
+                Write-Highlight "Service $service successfully deployed"
                 EOT
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
